@@ -1,0 +1,477 @@
+/* =========================
+   GOOGLE FONT
+========================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:linear-gradient(
+        135deg,
+        #0f172a,
+        #1e293b,
+        #312e81
+    );
+
+    color:white;
+
+    overflow-x:hidden;
+}
+
+/* =========================
+   GENERAL
+========================= */
+
+.hidden{
+    display:none !important;
+}
+
+.screen{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.card{
+    width:420px;
+    max-width:95%;
+    text-align:center;
+
+    padding:40px;
+
+    background:rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(16px);
+
+    border:1px solid rgba(255,255,255,0.12);
+
+    border-radius:24px;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.35);
+}
+
+.card h1{
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    opacity:0.8;
+    margin-bottom:30px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.difficulty-buttons{
+    display:flex;
+    gap:15px;
+    justify-content:center;
+}
+
+.difficulty-btn,
+#new-game-btn,
+#play-again-btn{
+
+    border:none;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-size:1rem;
+    font-weight:600;
+
+    padding:14px 24px;
+
+    border-radius:14px;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+.difficulty-btn:hover,
+#new-game-btn:hover,
+#play-again-btn:hover{
+    transform:translateY(-3px);
+}
+
+#easy-btn{
+    background:#22c55e;
+}
+
+#advanced-btn{
+    background:#ef4444;
+}
+
+#new-game-btn{
+    background:#3b82f6;
+}
+
+#play-again-btn{
+    background:#22c55e;
+}
+
+/* =========================
+   GAME AREA
+========================= */
+
+#game-container{
+    width:100%;
+    max-width:700px;
+    padding:20px;
+}
+
+header{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+header h1{
+    font-size:2.5rem;
+}
+
+.top-controls{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.difficulty-display{
+    font-size:1rem;
+    font-weight:500;
+}
+
+/* =========================
+   SUDOKU BOARD
+========================= */
+
+#sudoku-board{
+
+    width:min(90vw,540px);
+    height:min(90vw,540px);
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(9,1fr);
+    grid-template-rows:repeat(9,1fr);
+
+    background:white;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.35);
+}
+
+/* =========================
+   CELLS
+========================= */
+
+.cell{
+
+    border:1px solid #d6d6d6;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:white;
+
+    color:#111827;
+
+    font-size:1.35rem;
+    font-weight:600;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease,
+        color 0.25s ease;
+}
+
+.cell input{
+
+    width:100%;
+    height:100%;
+
+    text-align:center;
+
+    border:none;
+    outline:none;
+
+    font-size:1.35rem;
+    font-weight:600;
+
+    background:transparent;
+
+    color:#111827;
+}
+
+/* =========================
+   THICK GRID LINES
+========================= */
+
+.right-border{
+    border-right:3px solid #111827 !important;
+}
+
+.bottom-border{
+    border-bottom:3px solid #111827 !important;
+}
+
+/* =========================
+   PRE-FILLED CELLS
+========================= */
+
+.fixed{
+    background:#e0f2fe;
+    color:#0f172a;
+}
+
+/* =========================
+   CORRECT USER CELL
+========================= */
+
+.correct{
+    background:#dcfce7 !important;
+    color:#166534 !important;
+
+    animation:popIn 0.3s ease;
+}
+
+/* =========================
+   WRONG CELL
+========================= */
+
+.wrong{
+    background:#fee2e2 !important;
+}
+
+.wrong input{
+    color:#dc2626 !important;
+}
+
+/* =========================
+   SHAKE EFFECT
+========================= */
+
+.shake{
+    animation:shake 0.35s ease;
+}
+
+@keyframes shake{
+
+    0%{transform:translateX(0);}
+    20%{transform:translateX(-6px);}
+    40%{transform:translateX(6px);}
+    60%{transform:translateX(-6px);}
+    80%{transform:translateX(6px);}
+    100%{transform:translateX(0);}
+}
+
+/* =========================
+   CORRECT EFFECT
+========================= */
+
+@keyframes popIn{
+
+    0%{
+        transform:scale(0.85);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,0.65);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    z-index:999;
+}
+
+.modal-content{
+
+    width:420px;
+    max-width:90%;
+
+    text-align:center;
+
+    padding:35px;
+
+    background:white;
+
+    color:#111827;
+
+    border-radius:22px;
+
+    animation:modalShow 0.35s ease;
+}
+
+.modal-content h2{
+    margin-bottom:15px;
+}
+
+.modal-content p{
+    margin-bottom:25px;
+}
+
+@keyframes modalShow{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:600px){
+
+    header h1{
+        font-size:2rem;
+    }
+
+    .cell,
+    .cell input{
+        font-size:1rem;
+    }
+
+    .difficulty-buttons{
+        flex-direction:column;
+    }
+
+    .difficulty-btn{
+        width:100%;
+    }
+}
+
+/* =========================
+   HIGHLIGHTS
+========================= */
+
+.active-cell {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #3b82f6;
+}
+
+.highlight-row {
+    background: rgba(59,130,246,0.08);
+}
+
+.highlight-col {
+    background: rgba(34,197,94,0.08);
+}
+
+.highlight-box {
+    background: rgba(245,158,11,0.08);
+}
+
+/* =========================
+   POP ANIMATION
+========================= */
+
+.pop-animate {
+    animation: popIn 0.25s ease;
+}
+
+/* =========================
+   CONFETTI
+========================= */
+
+.confetti {
+    position: fixed;
+    top: -10px;
+    width: 8px;
+    height: 8px;
+    opacity: 0.9;
+    animation: fall 2s linear forwards;
+    z-index: 9999;
+    border-radius: 2px;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+/* TILE DROP */
+.cell {
+    animation: dropIn 0.25s ease;
+}
+
+@keyframes dropIn {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* GLOW EFFECT */
+.glow {
+    box-shadow: 0 0 12px #3b82f6;
+    transition: 0.3s;
+}
+body.dark {
+    background: #0a0a0a;
+}
+
+body.dark #sudoku-board {
+    background: #111;
+}
+
+body.dark .cell {
+    background: #1f1f1f;
+    color: white;
+}
