@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <button id="theme-toggle">🌙</button>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Master</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Difficulty Selection Screen -->
+    <div id="start-screen" class="screen">
+        <div class="card">
+
+            <h1>Sudoku Master</h1>
+
+            <p class="subtitle">
+                Choose your challenge
+            </p>
+
+            <div class="difficulty-buttons">
+                <button id="easy-btn" class="difficulty-btn">
+                    Easy
+                </button>
+
+                <button id="advanced-btn" class="difficulty-btn">
+                    Advanced
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Main Game -->
+    <div id="game-container" class="hidden">
+
+        <header>
+
+            <h1>Sudoku Master</h1>
+
+            <div class="top-controls">
+
+                <div class="difficulty-display">
+                    Difficulty:
+                    <span id="difficulty-text">Easy</span>
+                </div>
+
+                <button id="new-game-btn">
+                    New Game
+                </button>
+
+            </div>
+
+        </header>
+
+        <main>
+
+            <div id="sudoku-board"></div>
+
+        </main>
+
+    </div>
+
+    <!-- Congratulations Modal -->
+    <div id="win-modal" class="modal hidden">
+
+        <div class="modal-content">
+
+            <h2>🎉 Congratulations!</h2>
+
+            <p>
+                You completed the Sudoku puzzle successfully.
+            </p>
+
+            <button id="play-again-btn">
+                Play Again
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+
